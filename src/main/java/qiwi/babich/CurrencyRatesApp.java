@@ -6,6 +6,6 @@ public class CurrencyRatesApp {
         Parser p = new Parser();
         p.parse(args);
         CBApi api = new CBApi();
-        api.getCurrencyPrice(p.getCurrencyCode(), p.getRatesDate());
+        api.getCurrencyPrice(p.getCurrencyCode().toUpperCase(), p.getRatesDate(), CBApi.CBCurrencyDatePricesUrlString);
     }
 }
