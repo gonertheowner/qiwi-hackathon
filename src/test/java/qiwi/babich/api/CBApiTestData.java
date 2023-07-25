@@ -1,4 +1,4 @@
-package qiwi.babich;
+package qiwi.babich.api;
 
 public class CBApiTestData {
     public static final String legalApiUrlString = CBApi.CBCurrencyDatePricesUrlString;

@@ -1,10 +1,10 @@
-package qiwi.babich;
+package qiwi.babich.parser;
 
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
-public class Parser {
+public class CurrencyCodeAndDateParser implements Parser {
 
     @Option(name = "--code", required = true)
     private String currencyCode;
@@ -20,6 +20,7 @@ public class Parser {
         return ratesDate;
     }
 
+    @Override
     public void parse(String[] args) {
         CmdLineParser parser = new CmdLineParser(this);
         try {

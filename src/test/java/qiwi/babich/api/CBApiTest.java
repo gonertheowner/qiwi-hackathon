@@ -1,11 +1,11 @@
-package qiwi.babich;
+package qiwi.babich.api;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static qiwi.babich.CBApiTestData.illegalApiUrlString;
-import static qiwi.babich.CBApiTestData.legalApiUrlString;
-import static qiwi.babich.ParserTestData.*;
+import static qiwi.babich.api.CBApiTestData.illegalApiUrlString;
+import static qiwi.babich.api.CBApiTestData.legalApiUrlString;
+import static qiwi.babich.parser.ParserTestData.*;
 
 class CBApiTest {
 

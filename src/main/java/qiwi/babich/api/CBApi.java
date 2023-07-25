@@ -1,4 +1,4 @@
-package qiwi.babich;
+package qiwi.babich.api;
 
 import java.io.IOException;
 import java.io.InputStream;

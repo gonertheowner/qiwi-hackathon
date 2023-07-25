@@ -1,4 +1,4 @@
-package qiwi.babich;
+package qiwi.babich.parser;
 
 public class ParserTestData {
 
