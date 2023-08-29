@@ -15,22 +15,23 @@ public class CBApi {
     public static final String CBCurrencyDatePricesUrlString = "https://www.cbr.ru/scripts/XML_daily.asp?date_req=";
 
     public static String getCurrencyPrice(String code, String date, String apiUrlString) {
+        String formattedDate = LocalDate.parse(date).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), value = null;
         try {
-            String formattedDate = LocalDate.parse(date).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             URL url = new URL(apiUrlString + formattedDate);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            return getValue(code, connection);
+            value = getValue(code, connection);
         } catch (IOException e) {
-            throw new RuntimeException("Ошибка при отправке HTTP-запроса");
+            throw new CBApiException(e.getMessage());
         }
+        return value;
     }
 
     private static String getValue(String currencyCode, HttpURLConnection connection) throws IOException {
         if (connection.getResponseCode() == HTTP_OK) {
             return findCurrencyValue(connection.getInputStream(), currencyCode);
         } else {
-            throw new RuntimeException("Ошибка при получении курсов валют");
+            throw new CBApiException("Ошибка при получении курсов валют");
         }
     }
 
