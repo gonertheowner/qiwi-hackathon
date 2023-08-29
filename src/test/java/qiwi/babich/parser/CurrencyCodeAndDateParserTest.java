@@ -8,23 +8,23 @@ import static qiwi.babich.parser.ParserTestData.*;
 
 class CurrencyCodeAndDateParserTest {
 
-    private static final CurrencyCodeAndDateParser CURRENCY_CODE_AND_DATE_PARSER = new CurrencyCodeAndDateParser();
+    private static final CurrencyCodeAndDateParser parser = new CurrencyCodeAndDateParser();
 
     @Test
     void parseWithInvalidOptions() {
-        assertThrows(RuntimeException.class, () -> CURRENCY_CODE_AND_DATE_PARSER.parse(new String[]{currencyCodeOption + validCurrencyCode,
+        assertThrows(RuntimeException.class, () -> parser.parse(new String[]{currencyCodeOption + validCurrencyCode,
                 dateOption + validCurrencyDateString, illegalOption + illegalOptionValue}));
     }
 
     @Test
     void parseWithValidOptions() {
-        CURRENCY_CODE_AND_DATE_PARSER.parse(new String[]{currencyCodeOption + validCurrencyCode, dateOption + validCurrencyDateString});
-        assertEquals(CURRENCY_CODE_AND_DATE_PARSER.getCurrencyCode(), validCurrencyCode);
-        assertEquals(CURRENCY_CODE_AND_DATE_PARSER.getRatesDate(), validCurrencyDateString);
+        parser.parse(new String[]{currencyCodeOption + validCurrencyCode, dateOption + validCurrencyDateString});
+        assertEquals(parser.getParsedData().get("currencyCode"), validCurrencyCode);
+        assertEquals(parser.getParsedData().get("ratesDate"), validCurrencyDateString);
     }
 
     @Test
     void parseWithoutRequiredArguments() {
-        assertThrows(RuntimeException.class, () -> CURRENCY_CODE_AND_DATE_PARSER.parse(new String[]{currencyCodeOption + validCurrencyCode}));
+        assertThrows(RuntimeException.class, () -> parser.parse(new String[]{currencyCodeOption + validCurrencyCode}));
     }
 }
